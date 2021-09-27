@@ -28,15 +28,47 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js?ver=3.7.0"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
+<style>	
+	.video-container {
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Just styling the content of the div, the *magic* in the previous rules */
+.video-container .caption {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: #dc0000;
+  padding: 10px;
+}
+	</style>
 </head>
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="hfeed site">
 		<header id="masthead" class="site-header" role="banner">
+			<div class="video-container">
+    <video autoplay muted loop>
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+    </video>
+    <div class="caption">
+      <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+	  <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+    </div>
+</div>
 			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+				
 			</a>
 
 			<div id="navbar" class="navbar">
